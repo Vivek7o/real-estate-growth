@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urban Growth Prediction Dashboard</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ── HEADER ───────────────────────────────────────────────── -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Predictive Urban Growth Dashboard</h1>
+      <p>Real estate investment hotspot detection using municipal and market data</p>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill" id="stat-zones">— Zones</div>
+      <div class="stat-pill" id="stat-avg">Avg Score: —</div>
+      <div class="stat-pill highlight" id="stat-top">Top: —</div>
+      <button class="refresh-btn" onclick="refreshData()">Refresh Data</button>
+    </div>
+  </div>
+
+  <!-- ── MAIN LAYOUT ──────────────────────────────────────────── -->
+  <div class="main-layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="section-title">Top Growth Zones</div>
+        <div id="zone-list">
+          <div class="loading">Loading zones...</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Legend</div>
+        <div class="legend">
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#3fb950"></div>
+            <span>High Growth (70+)</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#d29922"></div>
+            <span>Medium Growth (40–69)</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#f85149"></div>
+            <span>Low Growth (below 40)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">Score Breakdown</div>
+        <div class="factor-info">
+          <div class="factor-row">
+            <div class="factor-dot" style="background:#58a6ff"></div>
+            <div>
+              <b>Municipal (50%)</b>
+              <p>Government infrastructure projects declared</p>
+            </div>
+          </div>
+          <div class="factor-row">
+            <div class="factor-dot" style="background:#3fb950"></div>
+            <div>
+              <b>Market (30%)</b>
+              <p>Listing density and price per sqft activity</p>
+            </div>
+          </div>
+          <div class="factor-row">
+            <div class="factor-dot" style="background:#d29922"></div>
+            <div>
+              <b>Trend (20%)</b>
+              <p>Capital appreciation vs rental yield gap</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Leaflet Heat plugin -->
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+  <!-- Our map script -->
+  <script src="map.js"></script>
+
+</body>
+</html>
